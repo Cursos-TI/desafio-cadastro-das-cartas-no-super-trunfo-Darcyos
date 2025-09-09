@@ -91,10 +91,88 @@ int main(){
     printf("Numero de pontos turisticos: %d \n", pontos_turisticos2);
     printf("Densidade Populacionala: %.2f hab/KM²\n", densidade_populacao2);
     printf("PIB per Capita: R$ %.2f \n", per_capita2);
+    
+    ///Bloco de variaveis e logica para calcular o vencedor da rodada
+    float super_poder1, super_poder2;
+
+    super_poder1 = (float)populacao1 + area1 + pib1 + (float)pontos_turisticos1 + per_capita1 + (1.0 / densidade_populacao1);
+
+    super_poder2 = (float)populacao2 + area2 + pib2 + (float)pontos_turisticos2 + per_capita2 + (1.0 / densidade_populacao2);
+
+    char c_populacao[20], c_area[20], c_pib[20], c_pontos_turisticos[20], c_densidade[20], c_percapita[20], c_poder[20]; 
+    
+    // Comparação População
+    if (populacao1 > populacao2) {
+        strcpy(c_populacao, "Carta 1 venceu (1)");
+    } else{
+        strcpy(c_populacao, "Carta 2 venceu (0)");
+    } 
+
+    // Comparação Área
+    if (area1 > area2) {
+        strcpy(c_area, "Carta 1 venceu (1)");
+    } else {
+        strcpy(c_area, "Carta 2 venceu (0)");
+    } 
+
+    // Comparação PIB
+    if (pib1 > pib2) {
+        strcpy(c_pib, "Carta 1 venceu (1)");
+    } else {
+        strcpy(c_pib, "Carta 2 venceu (0)");
+    } 
+
+    // Comparação Pontos turísticos
+    if (pontos_turisticos1 > pontos_turisticos2) {
+        strcpy(c_pontos_turisticos, "Carta 1 venceu (1)");
+    } else {
+        strcpy(c_pontos_turisticos, "Carta 2 venceu (0)");
+    }
+
+    // Comparação Densidade Populacional (MENOR VENCE)
+    if (densidade_populacao1 < densidade_populacao2) {
+        strcpy(c_densidade, "Carta 1 venceu (1)");
+    } else {
+        strcpy(c_densidade, "Carta 2 venceu (0)");
+    } 
+
+    // Comparação PIB per Capita
+    if (per_capita1 > per_capita2) {
+        strcpy(c_percapita, "Carta 1 venceu (1)");
+    } else {
+        strcpy(c_percapita, "Carta 2 venceu (0)");
+    }
+
+    // Comparação Super poder
+    if (super_poder1 > super_poder2) {
+        strcpy(c_poder, "Carta 1 venceu (1)");
+    } else {
+        strcpy(c_poder, "Carta 2 venceu (0)");
+    }
+
+   
+
+    // ---- Impressão dos resultados ----
+    printf("\n===== Comparação de Cartas =====\n");
+    printf("População: %s\n", c_populacao);
+    printf("Área: %s\n", c_area);
+    printf("PIB: %s\n", c_pib);
+    printf("Pontos turísticos: %s\n", c_pontos_turisticos);
+    printf("Densidade Populacional: %s\n", c_densidade);
+    printf("PIB per capita: %s\n", c_percapita);
+    printf("Super Poder: %s\n", c_poder);
+
+
+
+
+
     return 0;
 }
+
+
 
 ///Sobre o projeto:
 
 ///first commit: logica do desafio iciante criada com as variaveis e logicas solicitadas pelo poponente.
 ///commit-aventureiro: nesse desafio inseri as variaveis e a logica para renda per capita e densidade populacional, refiz a logica para alterar o tipo de print da variavel cidade para ser exibido nomes compostos caso a cidade tenha mais de um numero
+///commit-mestre: implementação da logica para calcular o ganhador.
