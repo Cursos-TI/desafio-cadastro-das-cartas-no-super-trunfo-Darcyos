@@ -2,11 +2,11 @@
 int main(){
     ///Bloco de variaveis onde conterá as informações das duas cartas. está dividido da seguinte forma: a primeira carta tem a terminação "1" e a segunda carta tem a terminação "2"
     ///Todas as variaveis do tipo inteiro estão na linha abaixo(linha 6)
-    int populacao1, pontos_turisticos1;
-    int populacao2, pontos_turisticos2;
+    int populacao1, pontos_turisticos1, numero1;
+    int populacao2, pontos_turisticos2, numero2;
     ///Todas as variaveis do tipo Char estão na linha abaixo(linha 8)
-    char estado1[3], codigo1[5], cidade1[20];
-    char estado2[3], codigo2[5], cidade2[20];
+    char estado1[3], codigo1[5], cidade1[50];
+    char estado2[3], codigo2[5], cidade2[50];
     ///Todas as variaveis do tipo float estão na linha abaixo(linha 10)
     float area1, pib1;
     float area2, pib2;
@@ -15,12 +15,12 @@ int main(){
     printf("para iniciarmos, vamos preencher os dados da primeira carta. Por favor digite uma letra entra 'A' e 'H' para representar um estado brasileiro: ");
     ///a linha a baixo está recebendo os dados e transformando-os em string que serão salvos na variavel estado1
     scanf("%s", estado1);
-    printf("Agora digite um codigo para a carta da seguinte forma uma letra que deve ser a que está representando o estado seguida de uma numero de 01 a 04 por exemplo a02: ");
-    ///a linha a baixo está recebendo os dados e transformando-os em string que serão salvos na variavel codigo1
+    printf("Agora digite o codigo para identificar sua carta. escolha a letra que representa seu estado seguido de um numero entre 01 a 04. Por exemplo A01: ");
+    ///a linha a baixo está recebendo os dados e transformando-os em string que serão salvos na variavel codigo
     scanf("%s", codigo1);
     printf("Agora digite o nome da cidade que você escolheu: ");
     ///a linha a baixo está recebendo os dados e transformando-os em string que serão salvos na variavel cidade1
-    scanf("%s", cidade1);
+    scanf(" %[^\n]", cidade1);
     printf("Agora digite a população aproximada desssa cidade: ");
     ///a linha a baixo está recebendo os dados e transformando-os em numero inteiro que serão salvos na variavel populacao1
     scanf("%d", &populacao1);
@@ -34,20 +34,24 @@ int main(){
     ///a linha a baixo está recebendo os dados e transformando-os em numero inteiro que serão salvos na variavel pontos_turisticos1
     scanf("%d", &pontos_turisticos1);
 
+    ///variaveis que fazem o calculo da densidade populacional e renda per capta da primeira carta
+    float densidade_populacao1 = populacao1 / area1;
+    float per_capita1 = pib1/ populacao1;
+    
 
     ///2º bloco: faz a leitura e gravação de todos os dados da segunda carta
     printf("Perfeito! agora vamos realizar o preenchimento dos dados da segunda carta.\nPara iniciarmos digite uma letra de 'A' a 'H' para indicar o estado escolhido: ");
     ///a linha a baixo está recebendo os dados e transformando-os em string que serão salvos na variavel estado2
-    scanf("%s", estado2);
-    printf("Agora digite um codigo para a carta da seguinte forma uma letra que deve ser a que está representando o estado seguida de uma numero de 01 a 04 por exemplo a02: ");
-    ///a linha a baixo está recebendo os dados e transformando-os em string que serão salvos na variavel codigo2
+    scanf(" %s", estado2);
+    printf("Agora digite o codigo para identificar sua carta. escolha a letra que representa seu estado seguido de um numero entre 01 a 04. Por exemplo A01: ");
+    ///a linha a baixo está recebendo os dados e transformando-os em string que serão salvos na variavel codigo
     scanf("%s", codigo2);
     printf("Agora digite o nome da cidade que você escolheu: ");
-    ///a linha a baixo está recebendo os dados e transformando-os em string que serão salvos na variavel cidade2
-    scanf("%s", cidade2);
+    ///a linha a baixo está recebendo os dados e transformando-os em string que serão salvos na variavel cidade1
+    scanf(" %[^\n]", cidade2);
     printf("Agora digite a população aproximada desssa cidade: ");
-    ///a linha a baixo está recebendo os dados e transformando-os em numero inteiro que serão salvos na variavel populacao2
-    scanf("%d", &populacao2);
+    ///a linha a baixo está recebendo os dados e transformando-os em numero inteiro que serão salvos na variavel populacao1
+     scanf("%d", &populacao2);
     printf("Agora digite a area em km² aproximada desssa cidade: ");
     ///a linha a baixo está recebendo os dados e transformando-os em float que serão salvos na variavel area2
     scanf("%f", &area2);
@@ -57,25 +61,40 @@ int main(){
     printf("Agora digite o numero de pontos turisticos aproximado desssa cidade: ");
     ///a linha a baixo está recebendo os dados e transformando-os em numero inteiro que serão salvos na variavel pontos_turisticos2
     scanf("%d", &pontos_turisticos2);
+
+    ///variaveis que fazem o calculo da densidade populacional e renda per capta da segunda carta
+    float densidade_populacao2 = populacao2 / area2;
+    float per_capita2 = pib2/ populacao2;
+
+
     printf("Otimo! Agora que ja temos todos os dados necessarios irei listar as duas cartas para você: ");
     ///prints que irão mostrar a primeira carta que o usuario preencheu. Esse bloco de prints está contendo todas as variaveis terminadas em "1" que estão representando a primeira carta
     printf("Carta 1\n");
     printf("Estado: %s \n", estado1);
-    printf("Codigo: %s \n", codigo1);
+    printf("codigoda carta: ", codigo1);
     printf("Nome da Cidade: %s \n", cidade1);
     printf("População: %d \n", populacao1);
     printf("Area: %.2f KM²\n", area1);
     printf("PIB: %.2f \n", pib1);
     printf("Numero de pontos turisticos: %d \n", pontos_turisticos1);
+    printf("Densidade Populacional:: %d hab/KM²\n", densidade_populacao1);
+    printf("PIB per Capita: R$ %d \n", per_capita1);
     printf("----------------------------\n");
     ///prints que irão mostrar a segunda carta que o usuario preencheu. Esse bloco de prints está contendo todas as variaveis terminadas em "2" que estão representando a segunda carta
     printf("Carta 2\n");
     printf("Estado: %s \n", estado2);
-    printf("Codigo: %s \n", codigo2);
+    printf("codigoda carta: ", codigo2);
     printf("Nome da Cidade: %s \n", cidade2);
     printf("População: %d \n", populacao2);
     printf("Area: %.2f KM²\n", area2);
     printf("PIB: %.2f \n", pib2);
     printf("Numero de pontos turisticos: %d \n", pontos_turisticos2);
+    printf("Densidade Populacionala: %.2f hab/KM²\n", densidade_populacao2);
+    printf("PIB per Capita: R$ %.2f \n", per_capita2);
     return 0;
 }
+
+///Sobre o projeto:
+
+///first commit: logica do desafio iciante criada com as variaveis e logicas solicitadas pelo poponente.
+///commit-aventureiro: nesse desafio inseri as variaveis e a logica para renda per capita e densidade populacional, refiz a logica para alterar o tipo de print da variavel cidade para ser exibido nomes compostos caso a cidade tenha mais de um numero
